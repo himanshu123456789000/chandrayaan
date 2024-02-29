@@ -1,15 +1,17 @@
 require_relative 'motion/chandrayaan_movement.rb'
 require_relative 'motion/chandrayaan_rotation.rb'
+require_relative 'motion/chandrayaan_angle.rb'
 
 class Chandrayaan
 
   include ChandrayaanMovement
   include ChandrayaanRotation
-  
+  include ChandrayaanAngle
+
   attr_accessor :position, :direction, :prev_direction
-  def initialize
-    @position = [0, 0, 0]
-    @direction = 'N'
+  def initialize(position: [0, 0, 0], direction: 'N')
+    @position = position
+    @direction = direction
     @prev_direction = nil
   end
 
@@ -30,15 +32,5 @@ class Chandrayaan
         puts "Error: #{e.message}"
       end
     end
-  end
-
-  def turn_upward(direction)
-    new_direction = direction == 'Up' || direction == 'Down' ? direction : 'Up'
-    [new_direction, direction]
-  end
-
-  def turn_downward(direction)
-    new_direction = direction == 'Up' || direction == 'Down' ? direction : 'Down'
-    [new_direction, direction]
   end
 end
