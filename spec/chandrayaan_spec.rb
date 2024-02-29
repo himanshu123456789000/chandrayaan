@@ -127,5 +127,42 @@ RSpec.describe Chandrayaan do
         expect(chandrayaan.position).to eq([0, -1, 0])
       end
     end
+
+    context 'motion in all axis' do
+      it 'should move forward in east direction while facing upward' do
+        chandrayaan = Chandrayaan.new
+        chandrayaan.execute_commands(['r', 'u', 'f'])
+        expect(chandrayaan.direction).to eq('Up')
+        expect(chandrayaan.position).to eq([0, 0, 1])
+      end
+
+      it 'should move backward in west direction while facing up' do
+        chandrayaan = Chandrayaan.new
+        chandrayaan.execute_commands(['l', 'u', 'b'])
+        expect(chandrayaan.direction).to eq('Up')
+        expect(chandrayaan.position).to eq([0, 0, -1])
+      end
+
+      it 'should move forward in west direction and facing up' do
+        chandrayaan = Chandrayaan.new
+        chandrayaan.execute_commands(['l', 'f', 'u'])
+        expect(chandrayaan.direction).to eq('Up')
+        expect(chandrayaan.position).to eq([-1, 0, 0])
+      end
+
+      it 'should move backward in North direction and facing down' do
+        chandrayaan = Chandrayaan.new
+        chandrayaan.execute_commands(['b', 'd'])
+        expect(chandrayaan.direction).to eq('Down')
+        expect(chandrayaan.position).to eq([0, -1, 0])
+      end
+
+      it 'should move forward in west direction' do
+        chandrayaan = Chandrayaan.new
+        chandrayaan.execute_commands(['l', 'f'])
+        expect(chandrayaan.direction).to eq('W')
+        expect(chandrayaan.position).to eq([-1, 0, 0])
+      end
+    end
   end
 end
