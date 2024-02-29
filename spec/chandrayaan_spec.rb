@@ -55,5 +55,77 @@ RSpec.describe Chandrayaan do
         expect(chandrayaan.direction).to eq('W')
       end
     end
+
+    context 'angle changes' do
+      it 'should turn upward from North to Up' do
+        chandrayaan = Chandrayaan.new
+        chandrayaan.execute_commands(['u'])
+        expect(chandrayaan.direction).to eq('Up')
+        expect(chandrayaan.position).to eq([0, 0, 0])
+      end
+
+      it 'should turn upward from South to Up' do
+        chandrayaan = Chandrayaan.new
+        chandrayaan.execute_commands(['l', 'l', 'u'])
+        expect(chandrayaan.direction).to eq('Up')
+        expect(chandrayaan.position).to eq([0, 0, 0])
+      end
+
+      it 'should turn upward from East to Up' do
+        chandrayaan = Chandrayaan.new
+        chandrayaan.execute_commands(['r', 'u'])
+        expect(chandrayaan.direction).to eq('Up')
+        expect(chandrayaan.position).to eq([0, 0, 0])
+      end
+
+      it 'should move forward and turn up' do
+        chandrayaan = Chandrayaan.new
+        chandrayaan.execute_commands(['f', 'u'])
+        expect(chandrayaan.direction).to eq('Up')
+        expect(chandrayaan.position).to eq([0, 1, 0])
+      end
+
+      it 'should move backward and turn up' do
+        chandrayaan = Chandrayaan.new
+        chandrayaan.execute_commands(['b', 'u'])
+        expect(chandrayaan.direction).to eq('Up')
+        expect(chandrayaan.position).to eq([0, -1, 0])
+      end
+
+      it 'should turn downward from North to Down' do
+        chandrayaan = Chandrayaan.new
+        chandrayaan.execute_commands(['d'])
+        expect(chandrayaan.direction).to eq('Down')
+        expect(chandrayaan.position).to eq([0, 0, 0])
+      end
+
+      it 'should turn downward from South to Down' do
+        chandrayaan = Chandrayaan.new
+        chandrayaan.execute_commands(['r', 'r', 'd'])
+        expect(chandrayaan.direction).to eq('Down')
+        expect(chandrayaan.position).to eq([0, 0, 0])
+      end
+
+      it 'should turn downward from East to Down' do
+        chandrayaan = Chandrayaan.new
+        chandrayaan.execute_commands(['r', 'd'])
+        expect(chandrayaan.direction).to eq('Down')
+        expect(chandrayaan.position).to eq([0, 0, 0])
+      end
+
+      it 'should move forward and turn down' do
+        chandrayaan = Chandrayaan.new
+        chandrayaan.execute_commands(['f', 'd'])
+        expect(chandrayaan.direction).to eq('Down')
+        expect(chandrayaan.position).to eq([0, 1, 0])
+      end
+
+      it 'should move backward and turn down' do
+        chandrayaan = Chandrayaan.new
+        chandrayaan.execute_commands(['b', 'd'])
+        expect(chandrayaan.direction).to eq('Down')
+        expect(chandrayaan.position).to eq([0, -1, 0])
+      end
+    end
   end
 end
