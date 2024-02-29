@@ -25,5 +25,35 @@ RSpec.describe Chandrayaan do
         expect(chandrayaan.direction).to eq('N')
       end
     end
+    
+    context 'rotation' do
+      it 'should turns left from North to West' do
+        chandrayaan = Chandrayaan.new
+        chandrayaan.execute_commands(['l'])
+        expect(chandrayaan.position).to eq([0, 0, 0])
+        expect(chandrayaan.direction).to eq('W')
+      end
+
+      it 'should turns right from North to East' do
+        chandrayaan = Chandrayaan.new
+        chandrayaan.execute_commands(['r'])
+        expect(chandrayaan.position).to eq([0, 0, 0])
+        expect(chandrayaan.direction).to eq('E')
+      end
+
+      it 'should turns left multiple times' do
+        chandrayaan = Chandrayaan.new
+        chandrayaan.execute_commands(['l', 'l'])
+        expect(chandrayaan.position).to eq([0, 0, 0])
+        expect(chandrayaan.direction).to eq('S')
+      end
+
+      it 'should turns right multiple times' do
+        chandrayaan = Chandrayaan.new
+        chandrayaan.execute_commands(['r', 'r', 'r'])
+        expect(chandrayaan.position).to eq([0, 0, 0])
+        expect(chandrayaan.direction).to eq('W')
+      end
+    end
   end
 end
