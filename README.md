@@ -40,3 +40,47 @@ Final Direction: N
 5. Do not throw exceptions/handle cases for invalid arguments.
 6. Take your time and provide your best work.
 7. Send us the link to your repository once you’re happy with what you’ve done.
+
+
+# Setup the Chandrayaan
+
+1. Clone the repository to your local machine: bash git clone 
+
+2. Navigate to the project directory
+```bash
+cd chandrayaan
+```
+
+3. Setup the rvm from official site https://rvm.io/rvm/install and install RUBY 3.0.0
+```bash
+rvm install 3.0.0
+```
+
+# Testing the Chandrayaan
+
+On console Run:
+```bash
+rspec
+```
+
+# Take input from the user in Chandrayaan
+
+To run Chandrayaan from user input:
+```bash
+ruby main.rb
+```
+
+Example:
+```bash
+developer@developer:~/Desktop/incubyte-master$ ruby main.rb
+Welcome to Chandrayaan 3 Lunar Craft Control!
+Enter the initial x-coordinate: 0       
+Enter the initial y-coordinate: 0
+Enter the initial z-coordinate: 0
+Enter the initial direction (N/S/E/W/Up/Down): N
+Enter commands (e.g., f for forward, l for left, etc.): f
+Final Position: (0, 1, 0)
+Final Direction: N
+```
+
+Ensure you have Ruby installed on your machine
